@@ -1,0 +1,696 @@
+/* =====================================================
+   PLACE ORDER PAGE
+===================================================== */
+
+.place-order-page {
+  min-height: calc(100vh - 70px);
+  padding: 42px 6% 70px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(34, 197, 94, 0.08),
+      transparent 30%
+    ),
+    #f5f8f3;
+}
+
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.place-order-back {
+  display: block;
+
+  max-width: 1240px;
+  margin: 0 auto 28px;
+
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #166534;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.place-order-back:hover {
+  color: #14532d;
+  transform: translateX(-3px);
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.place-order-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.place-order-header {
+  margin-bottom: 32px;
+}
+
+.place-order-header p {
+  margin: 0 0 8px;
+
+  color: #16a34a;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.place-order-header h1 {
+  margin: 0;
+
+  color: #163a28;
+
+  font-size: 42px;
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.place-order-header span {
+  display: block;
+
+  margin-top: 10px;
+
+  color: #64748b;
+
+  font-size: 15px;
+}
+
+
+/* =====================================================
+   MAIN GRID
+===================================================== */
+
+.place-order-grid {
+  display: grid;
+
+  grid-template-columns: minmax(340px, 0.85fr) minmax(480px, 1.15fr);
+
+  gap: 26px;
+
+  align-items: start;
+}
+
+
+/* =====================================================
+   PRODUCT SUMMARY CARD
+===================================================== */
+
+.order-product-card {
+  position: sticky;
+  top: 95px;
+
+  display: flex;
+
+  gap: 20px;
+
+  padding: 28px;
+
+  background: rgba(255, 255, 255, 0.95);
+
+  border: 1px solid #e2e8e4;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.05),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+.order-product-icon {
+  width: 76px;
+  height: 76px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #dcfce7,
+      #f0fdf4
+    );
+
+  border: 1px solid #bbf7d0;
+
+  color: #166534;
+
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.order-product-details {
+  flex: 1;
+}
+
+.order-product-details > span {
+  color: #94a3b8;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 1.6px;
+}
+
+.order-product-details h2 {
+  margin: 5px 0 7px;
+
+  color: #173b2a;
+
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+.order-product-details > p {
+  margin: 0 0 24px;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   PRODUCT INFO
+===================================================== */
+
+.order-product-info {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 9px;
+}
+
+.order-product-info div {
+  padding: 13px 10px;
+
+  background: #f8faf9;
+
+  border: 1px solid #edf2ef;
+
+  border-radius: 11px;
+}
+
+.order-product-info span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.order-product-info strong {
+  color: #1e293b;
+
+  font-size: 13px;
+}
+
+
+/* =====================================================
+   ORDER FORM CARD
+===================================================== */
+
+.place-order-form {
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8e4;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06),
+    0 2px 6px rgba(15, 23, 42, 0.03);
+}
+
+
+/* =====================================================
+   FORM SECTION
+===================================================== */
+
+.form-section {
+  padding-bottom: 27px;
+
+  border-bottom: 1px solid #edf0ee;
+}
+
+.form-section h2 {
+  margin: 0;
+
+  color: #173b2a;
+
+  font-size: 21px;
+}
+
+.form-section > p {
+  max-width: 560px;
+
+  margin: 8px 0 22px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   LOCATION INPUTS
+===================================================== */
+
+.location-fields {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 15px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.form-field label {
+  color: #334155;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.form-field input {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid #d7dfda;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #fbfdfb;
+
+  color: #1e293b;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.form-field input:hover {
+  border-color: #a7b8ad;
+}
+
+.form-field input:focus {
+  border-color: #22c55e;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(34, 197, 94, 0.10);
+}
+
+.form-field input::placeholder {
+  color: #a1aaa5;
+}
+
+
+/* =====================================================
+   CALCULATE DISTANCE BUTTON
+===================================================== */
+
+.calculate-distance-button {
+  width: 100%;
+
+  margin-top: 17px;
+
+  padding: 13px 18px;
+
+  border: 1px solid #bbf7d0;
+
+  border-radius: 10px;
+
+  background: #f0fdf4;
+
+  color: #15803d;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.calculate-distance-button:hover {
+  background: #dcfce7;
+
+  border-color: #86efac;
+
+  transform: translateY(-1px);
+}
+
+.calculate-distance-button:disabled {
+  opacity: 0.6;
+
+  cursor: wait;
+
+  transform: none;
+}
+
+
+/* =====================================================
+   PRICE SUMMARY
+===================================================== */
+
+.price-summary {
+  margin-top: 26px;
+}
+
+.price-summary h2 {
+  margin: 0 0 19px;
+
+  color: #173b2a;
+
+  font-size: 21px;
+}
+
+
+/* =====================================================
+   PRICE ROW
+===================================================== */
+
+.price-row {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 14px;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.price-row strong {
+  color: #334155;
+
+  font-size: 14px;
+}
+
+
+/* =====================================================
+   DISTANCE HIGHLIGHT
+===================================================== */
+
+.price-row:nth-of-type(2) strong {
+  color: #15803d;
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.price-divider {
+  height: 1px;
+
+  margin: 20px 0;
+
+  background: #e5e7eb;
+}
+
+
+/* =====================================================
+   FINAL AMOUNT
+===================================================== */
+
+.total-row {
+  margin-bottom: 0;
+
+  padding: 15px 17px;
+
+  border-radius: 12px;
+
+  background: #f0fdf4;
+
+  color: #173b2a;
+
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.total-row strong {
+  color: #15803d;
+
+  font-size: 20px;
+}
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.place-order-error {
+  display: flex;
+  align-items: center;
+
+  margin-top: 20px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #fecaca;
+
+  border-radius: 10px;
+
+  background: #fff7f7;
+
+  color: #dc2626;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   SUCCESS
+===================================================== */
+
+.place-order-success {
+  display: flex;
+  align-items: center;
+
+  margin-top: 20px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #bbf7d0;
+
+  border-radius: 10px;
+
+  background: #f0fdf4;
+
+  color: #15803d;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* =====================================================
+   PLACE ORDER BUTTON
+===================================================== */
+
+.place-order-button {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 15px 20px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #15803d,
+      #16a34a
+    );
+
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 16px rgba(22, 163, 74, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.place-order-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 22px rgba(22, 163, 74, 0.26);
+}
+
+.place-order-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.place-order-button:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =====================================================
+   MISSING ORDER MESSAGE
+===================================================== */
+
+.place-order-message {
+  min-height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  background: #f5f8f3;
+}
+
+.place-order-message h2 {
+  margin: 0;
+
+  color: #173b2a;
+}
+
+.place-order-message button {
+  padding: 11px 20px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #15803d;
+
+  color: #ffffff;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 950px) {
+  .place-order-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-product-card {
+    position: static;
+  }
+}
+
+
+@media (max-width: 650px) {
+  .place-order-page {
+    padding: 28px 18px 50px;
+  }
+
+  .place-order-header h1 {
+    font-size: 32px;
+  }
+
+  .place-order-form {
+    padding: 22px;
+  }
+
+  .order-product-card {
+    flex-direction: column;
+  }
+
+  .order-product-icon {
+    width: 62px;
+    height: 62px;
+  }
+
+  .order-product-info {
+    grid-template-columns: 1fr;
+  }
+
+  .location-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .price-row {
+    font-size: 13px;
+  }
+
+  .total-row {
+    padding: 13px;
+  }
+
+  .total-row strong {
+    font-size: 17px;
+  }
+}

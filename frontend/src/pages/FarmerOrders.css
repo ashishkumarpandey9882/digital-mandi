@@ -1,0 +1,424 @@
+.farmer-orders-page {
+  min-height: calc(100vh - 72px);
+  padding: 52px 7%;
+  background:
+    radial-gradient(circle at top right, rgba(34, 197, 94, 0.08), transparent 30%),
+    #f5f8f3;
+}
+
+/* Header */
+
+.farmer-orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 34px;
+}
+
+.farmer-orders-eyebrow {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: #15803d;
+}
+
+.farmer-orders-header h1 {
+  margin: 0;
+  font-size: 38px;
+  color: #16351f;
+  letter-spacing: -1px;
+}
+
+.farmer-orders-header p {
+  margin: 10px 0 0;
+  color: #66736a;
+  font-size: 15px;
+}
+
+.farmer-orders-refresh {
+  border: 1px solid #d7e0d8;
+  padding: 12px 19px;
+  border-radius: 11px;
+  background: white;
+  color: #31553b;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.farmer-orders-refresh:hover {
+  background: #ecfdf3;
+  border-color: #b7d8bd;
+}
+
+/* Stats */
+
+.farmer-orders-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 34px;
+}
+
+.farmer-order-stat {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e3eae4;
+  border-radius: 17px;
+  box-shadow: 0 8px 25px rgba(22, 101, 52, 0.05);
+}
+
+.farmer-order-stat span {
+  display: block;
+  margin-bottom: 7px;
+  color: #7b877f;
+  font-size: 12px;
+}
+
+.farmer-order-stat strong {
+  color: #173b23;
+  font-size: 27px;
+}
+
+/* Error */
+
+.farmer-orders-error {
+  margin-bottom: 25px;
+  padding: 15px 18px;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  background: #fff7f7;
+  color: #991b1b;
+  font-size: 14px;
+}
+
+/* Empty */
+
+.farmer-orders-empty {
+  max-width: 650px;
+  margin: 65px auto;
+  padding: 55px 35px;
+  text-align: center;
+  background: white;
+  border: 1px solid #e3eae4;
+  border-radius: 22px;
+  box-shadow: 0 15px 40px rgba(22, 101, 52, 0.06);
+}
+
+.farmer-orders-empty-icon {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  border-radius: 20px;
+  background: #ecfdf3;
+  font-size: 30px;
+}
+
+.farmer-orders-empty h2 {
+  margin: 0 0 10px;
+  color: #183b24;
+  font-size: 25px;
+}
+
+.farmer-orders-empty p {
+  margin: 0;
+  color: #718078;
+  line-height: 1.7;
+}
+
+/* Orders */
+
+.farmer-orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.farmer-order-card {
+  overflow: hidden;
+  background: white;
+  border: 1px solid #e3eae4;
+  border-radius: 19px;
+  box-shadow: 0 9px 28px rgba(22, 101, 52, 0.05);
+  transition: 0.2s ease;
+}
+
+.farmer-order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(22, 101, 52, 0.09);
+}
+
+/* Top */
+
+.farmer-order-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 23px 25px;
+  border-bottom: 1px solid #edf1ed;
+}
+
+.farmer-order-product {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.farmer-order-icon {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: #ecfdf3;
+  color: #166534;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.farmer-order-product span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  color: #829087;
+}
+
+.farmer-order-product h2 {
+  margin: 4px 0;
+  color: #173b23;
+  font-size: 21px;
+}
+
+.farmer-order-product p {
+  margin: 0;
+  color: #89948d;
+  font-size: 11px;
+}
+
+/* Status */
+
+.farmer-order-status {
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.farmer-order-status.pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.farmer-order-status.accepted {
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.farmer-order-status.rejected {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+/* Details */
+
+.farmer-order-details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #edf1ed;
+}
+
+.farmer-order-details > div {
+  padding: 19px 22px;
+  background: white;
+}
+
+.farmer-order-details span,
+.farmer-order-buyer span {
+  display: block;
+  margin-bottom: 6px;
+  color: #89948d;
+  font-size: 11px;
+}
+
+.farmer-order-details strong,
+.farmer-order-buyer strong {
+  color: #264b31;
+  font-size: 15px;
+}
+
+/* Buyer */
+
+.farmer-order-buyer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px 25px;
+  background: #fbfdfb;
+  border-top: 1px solid #edf1ed;
+}
+
+/* Actions */
+
+.farmer-order-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 18px 25px;
+  border-top: 1px solid #edf1ed;
+}
+
+.accept-order-btn,
+.reject-order-btn {
+  min-width: 135px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.accept-order-btn {
+  border: 0;
+  background: #166534;
+  color: white;
+}
+
+.accept-order-btn:hover {
+  background: #14532d;
+  transform: translateY(-1px);
+}
+
+.reject-order-btn {
+  border: 1px solid #fecaca;
+  background: #fff7f7;
+  color: #b91c1c;
+}
+
+.reject-order-btn:hover {
+  background: #fef2f2;
+}
+
+.accept-order-btn:disabled,
+.reject-order-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Status Messages */
+
+.farmer-order-message {
+  padding: 16px 25px;
+  border-top: 1px solid #edf1ed;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.accepted-message {
+  color: #15803d;
+  background: #fbfefc;
+}
+
+.rejected-message {
+  color: #b91c1c;
+  background: #fffafa;
+}
+
+/* Loading */
+
+.farmer-orders-loading {
+  min-height: 65vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.farmer-orders-spinner {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 18px;
+  border: 4px solid #dce9df;
+  border-top-color: #166534;
+  border-radius: 50%;
+  animation: farmerOrderSpin 0.8s linear infinite;
+}
+
+.farmer-orders-loading h2 {
+  margin: 0 0 6px;
+  color: #183b24;
+}
+
+.farmer-orders-loading p {
+  margin: 0;
+  color: #7b877f;
+}
+
+@keyframes farmerOrderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive */
+
+@media (max-width: 950px) {
+  .farmer-orders-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .farmer-order-details {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .farmer-orders-page {
+    padding: 35px 5%;
+  }
+
+  .farmer-orders-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .farmer-orders-header h1 {
+    font-size: 31px;
+  }
+
+  .farmer-orders-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .farmer-order-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .farmer-order-details {
+    grid-template-columns: 1fr;
+  }
+
+  .farmer-order-buyer {
+    grid-template-columns: 1fr;
+  }
+
+  .farmer-order-actions {
+    flex-direction: column;
+  }
+
+  .accept-order-btn,
+  .reject-order-btn {
+    width: 100%;
+  }
+}

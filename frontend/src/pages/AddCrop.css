@@ -1,0 +1,254 @@
+.add-crop-page {
+  min-height: calc(100vh - 70px);
+  padding: 50px 20px;
+  background: #f5f8f3;
+}
+
+.add-crop-container {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+
+/* ================= HEADER ================= */
+
+.add-crop-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.add-crop-label {
+  margin: 0 0 8px;
+  color: #1f7a3f;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.add-crop-header h1 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 38px;
+}
+
+.add-crop-header p {
+  margin: 10px 0 0;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+
+/* ================= FORM ================= */
+
+.add-crop-form {
+  padding: 40px;
+
+  background: white;
+
+  border: 1px solid #e3ebe5;
+  border-radius: 22px;
+
+  box-shadow: 0 15px 40px rgba(20, 60, 35, 0.08);
+}
+
+
+/* ================= FIELD ================= */
+
+.add-crop-field {
+  margin-bottom: 22px;
+}
+
+.add-crop-field label {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #374151;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.add-crop-field input,
+.add-crop-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 13px 15px;
+
+  border: 1px solid #d9dfda;
+  border-radius: 10px;
+
+  background: #fafcf9;
+
+  color: #1f2937;
+  font-size: 15px;
+
+  outline: none;
+
+  transition: all 0.25s ease;
+}
+
+.add-crop-field input:focus,
+.add-crop-field textarea:focus {
+  border-color: #1f7a3f;
+  background: white;
+
+  box-shadow: 0 0 0 4px rgba(31, 122, 63, 0.1);
+}
+
+.add-crop-field textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.add-crop-field small {
+  display: block;
+  margin-top: 7px;
+
+  color: #8a948d;
+  font-size: 12px;
+}
+
+
+/* ================= ROW ================= */
+
+.add-crop-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+
+/* ================= LOCATION ================= */
+
+.location-section {
+  margin: 10px 0 25px;
+  padding: 22px;
+
+  background: #f7faf7;
+
+  border: 1px solid #e1ebe3;
+  border-radius: 15px;
+}
+
+.location-section h3 {
+  margin: 0 0 6px;
+
+  color: #1f2937;
+  font-size: 18px;
+}
+
+.location-section > p {
+  margin: 0 0 20px;
+
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+
+/* ================= MESSAGES ================= */
+
+.add-crop-error {
+  margin-bottom: 18px;
+
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+
+  color: #be123c;
+
+  text-align: center;
+  font-size: 14px;
+}
+
+.add-crop-success {
+  margin-bottom: 18px;
+
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+
+  color: #047857;
+
+  text-align: center;
+  font-size: 14px;
+}
+
+
+/* ================= BUTTON ================= */
+
+.add-crop-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #1f7a3f,
+    #176331
+  );
+
+  color: white;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 18px rgba(31, 122, 63, 0.2);
+
+  transition: all 0.25s ease;
+}
+
+.add-crop-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 12px 25px rgba(31, 122, 63, 0.3);
+}
+
+.add-crop-button:active {
+  transform: translateY(0);
+}
+
+.add-crop-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 650px) {
+
+  .add-crop-page {
+    padding: 35px 15px;
+  }
+
+  .add-crop-header h1 {
+    font-size: 30px;
+  }
+
+  .add-crop-form {
+    padding: 25px 20px;
+  }
+
+  .add-crop-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .location-section {
+    padding: 18px;
+  }
+}

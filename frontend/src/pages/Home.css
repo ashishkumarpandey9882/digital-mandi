@@ -1,0 +1,98 @@
+.home {
+  min-height: 100vh;
+  background: #f7f8f5;
+}
+
+.hero-section {
+  padding: 100px 7%;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: auto;
+}
+
+.hero-label {
+  color: #1f7a3f;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.hero-content h1 {
+  margin: 20px 0;
+  font-size: 55px;
+  line-height: 1.1;
+  color: #1f2937;
+}
+
+.hero-text {
+  max-width: 650px;
+  margin: 0 auto 30px;
+  color: #666;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 14px 25px;
+  background: #1f7a3f;
+  color: white;
+  text-decoration: none;
+  border-radius: 9px;
+  font-weight: 600;
+}
+
+.hero-button:hover {
+  background: #176331;
+}
+
+.features {
+  padding: 60px 7%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.feature-card {
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.feature-card h3 {
+  margin-top: 0;
+}
+
+.feature-card p {
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .hero-section {
+    padding: 70px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 40px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
