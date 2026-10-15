@@ -1,3 +1,4 @@
+
 .farmer-orders-page {
   min-height: calc(100vh - 72px);
   padding: 52px 7%;
@@ -54,7 +55,12 @@
   border-color: #b7d8bd;
 }
 
-/* Stats */
+.farmer-orders-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Statistics */
 
 .farmer-orders-stats {
   display: grid;
@@ -86,6 +92,9 @@
 /* Error */
 
 .farmer-orders-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
   margin-bottom: 25px;
   padding: 15px 18px;
   border: 1px solid #fecaca;
@@ -95,7 +104,21 @@
   font-size: 14px;
 }
 
-/* Empty */
+.farmer-orders-error p {
+  margin: 5px 0 0;
+}
+
+.farmer-orders-error button {
+  margin-left: auto;
+  padding: 8px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: white;
+  color: #991b1b;
+  cursor: pointer;
+}
+
+/* Empty State */
 
 .farmer-orders-empty {
   max-width: 650px;
@@ -132,7 +155,7 @@
   line-height: 1.7;
 }
 
-/* Orders */
+/* Orders List */
 
 .farmer-orders-list {
   display: flex;
@@ -146,7 +169,7 @@
   border: 1px solid #e3eae4;
   border-radius: 19px;
   box-shadow: 0 9px 28px rgba(22, 101, 52, 0.05);
-  transition: 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .farmer-order-card:hover {
@@ -154,12 +177,13 @@
   box-shadow: 0 14px 35px rgba(22, 101, 52, 0.09);
 }
 
-/* Top */
+/* Order Header */
 
 .farmer-order-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   padding: 23px 25px;
   border-bottom: 1px solid #edf1ed;
 }
@@ -168,11 +192,13 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  min-width: 0;
 }
 
 .farmer-order-icon {
   width: 54px;
   height: 54px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,11 +226,13 @@
   margin: 0;
   color: #89948d;
   font-size: 11px;
+  overflow-wrap: anywhere;
 }
 
-/* Status */
+/* Order Status */
 
 .farmer-order-status {
+  flex-shrink: 0;
   padding: 8px 14px;
   border-radius: 20px;
   font-size: 12px;
@@ -227,16 +255,32 @@
   color: #b91c1c;
 }
 
-/* Details */
+.farmer-order-status.in-transit {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.farmer-order-status.delivered {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.farmer-order-status.cancelled {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+/* Order Details */
 
 .farmer-order-details {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
   background: #edf1ed;
 }
 
 .farmer-order-details > div {
+  min-width: 0;
   padding: 19px 22px;
   background: white;
 }
@@ -253,20 +297,25 @@
 .farmer-order-buyer strong {
   color: #264b31;
   font-size: 15px;
+  overflow-wrap: anywhere;
 }
 
-/* Buyer */
+/* Buyer Details */
 
 .farmer-order-buyer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   padding: 20px 25px;
   background: #fbfdfb;
   border-top: 1px solid #edf1ed;
 }
 
-/* Actions */
+.farmer-order-buyer > div {
+  min-width: 0;
+}
+
+/* Accept / Reject Actions */
 
 .farmer-order-actions {
   display: flex;
@@ -311,15 +360,20 @@
 .reject-order-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
-/* Status Messages */
+/* Order Status Messages */
 
 .farmer-order-message {
   padding: 16px 25px;
   border-top: 1px solid #edf1ed;
   font-size: 14px;
   font-weight: 600;
+}
+
+.farmer-order-message p {
+  margin: 0;
 }
 
 .accepted-message {
@@ -330,6 +384,61 @@
 .rejected-message {
   color: #b91c1c;
   background: #fffafa;
+}
+
+/* Payment Status - matches FarmerOrders.jsx */
+
+.payment-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #e3eae4;
+}
+
+.payment-status-row strong {
+  color: #31553b;
+  font-size: 13px;
+}
+
+.payment-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.payment-done {
+  background: #dcfce7;
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
+.payment-pending {
+  background: #fff7ed;
+  color: #c2410c;
+  border-color: #fed7aa;
+}
+
+.payment-failed {
+  background: #fef2f2;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.payment-refunded {
+  background: #f3e8ff;
+  color: #7e22ce;
+  border-color: #e9d5ff;
 }
 
 /* Loading */
@@ -369,56 +478,121 @@
   }
 }
 
-/* Responsive */
+/* Responsive: Tablets */
 
 @media (max-width: 950px) {
+  .farmer-orders-page {
+    padding: 40px 5%;
+  }
+
   .farmer-orders-stats {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .farmer-order-details {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* Responsive: Mobile */
+
 @media (max-width: 700px) {
   .farmer-orders-page {
-    padding: 35px 5%;
+    padding: 30px 4%;
   }
 
   .farmer-orders-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 18px;
   }
 
   .farmer-orders-header h1 {
     font-size: 31px;
   }
 
+  .farmer-orders-header p {
+    line-height: 1.6;
+  }
+
+  .farmer-orders-refresh {
+    width: 100%;
+  }
+
   .farmer-orders-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .farmer-order-stat {
+    padding: 17px;
+  }
+
+  .farmer-order-stat strong {
+    font-size: 24px;
   }
 
   .farmer-order-top {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+    padding: 20px;
+  }
+
+  .farmer-order-details {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .farmer-order-details > div {
+    padding: 16px;
+  }
+
+  .farmer-order-buyer {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 18px 20px;
+  }
+
+  .farmer-order-actions {
+    flex-direction: column;
+    padding: 18px 20px;
+  }
+
+  .accept-order-btn,
+  .reject-order-btn {
+    width: 100%;
+  }
+
+  .farmer-order-message {
+    padding: 16px 20px;
+  }
+
+  .payment-status-row {
+    align-items: flex-start;
+  }
+}
+
+/* Very Small Screens */
+
+@media (max-width: 380px) {
+  .farmer-orders-stats {
+    grid-template-columns: 1fr;
   }
 
   .farmer-order-details {
     grid-template-columns: 1fr;
   }
 
-  .farmer-order-buyer {
-    grid-template-columns: 1fr;
+  .farmer-order-product h2 {
+    font-size: 18px;
   }
 
-  .farmer-order-actions {
-    flex-direction: column;
+  .farmer-order-product {
+    gap: 10px;
   }
 
-  .accept-order-btn,
-  .reject-order-btn {
-    width: 100%;
+  .farmer-order-icon {
+    width: 45px;
+    height: 45px;
   }
 }
