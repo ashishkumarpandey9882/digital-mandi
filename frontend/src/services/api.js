@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://digital-mandi-cl0x.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -23,9 +23,7 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
   (error) => {
     if (error.response?.status === 401) {
       console.warn("Authentication expired or invalid.");
@@ -33,7 +31,6 @@ api.interceptors.response.use(
       localStorage.removeItem("token");
       localStorage.removeItem("user");
 
-      // Login page par redirect
       window.location.href = "/login";
     }
 
