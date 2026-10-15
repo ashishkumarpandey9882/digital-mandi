@@ -1,34 +1,31 @@
+
 import { createContext, useContext, useState } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
-    const savedUser = localStorage.getItem("user");
-
-    return savedUser
-      ? JSON.parse(savedUser)
-      : null;
+    try {
+      const savedUser = localStorage.getItem("user");
+      return savedUser ? JSON.parse(savedUser) : null;
+    } catch {
+      localStorage.removeItem("user");
+      return null;
+    }
   });
 
-  const [token, setToken] = useState(() => {
-    return localStorage.getItem("token");
-  });
+  const [token, setToken] = useState(
+    () => localStorage.getItem("token")
+  );
 
-  // LOGIN
   const login = (userData, jwtToken) => {
     setUser(userData);
     setToken(jwtToken);
 
-    localStorage.setItem(
-      "user",
-      JSON.stringify(userData)
-    );
-
+    localStorage.setItem("user", JSON.stringify(userData));
     localStorage.setItem("token", jwtToken);
   };
 
-  // LOGOUT
   const logout = () => {
     setUser(null);
     setToken(null);
@@ -37,22 +34,21 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("token");
   };
 
+  const value = {
+    user,
+    token,
+    login,
+    logout,
+    isLoggedIn: Boolean(token),
+  };
+
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        token,
-        login,
-        logout,
-        isLoggedIn: !!token,
-      }}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );
 }
 
-// Custom Hook
 export function useAuth() {
   return useContext(AuthContext);
 }

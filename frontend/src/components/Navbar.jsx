@@ -1,94 +1,162 @@
-import { Link } from "react-router-dom";
+
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
   const { user, isLoggedIn, logout } = useAuth();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
+    setMenuOpen(false);
     logout();
   };
 
+  const dashboardPath =
+    user?.role === "farmer"
+      ? "/farmer-dashboard"
+      : "/buyer-dashboard";
+
+  const displayName = user?.name || "User";
+  const initial = displayName.charAt(0).toUpperCase();
+
+  const navLinkClass = ({ isActive }) =>
+    `navbar-link${isActive ? " active" : ""}`;
+
   return (
-    <nav className="navbar">
+    <header className="site-header">
+      <nav className="navbar">
+        {/* BRAND */}
+        <Link
+          to="/"
+          className="navbar-brand"
+          aria-label="Digital Mandi home"
+          onClick={() => setMenuOpen(false)}
+        >
+          <span className="brand-icon" aria-hidden="true">
+            🌾
+          </span>
 
-      {/* LOGO */}
-      <Link
-        to="/"
-        className="navbar-logo"
-      >
-        🌾 Digital Mandi
-      </Link>
-
-      {/* NAVIGATION */}
-      <div className="navbar-links">
-
-        <Link to="/">
-          Home
+          <span className="brand-copy">
+            <span className="brand-name">Digital Mandi</span>
+            <span className="brand-tagline">
+              Farm to Market, Made Simple
+            </span>
+          </span>
         </Link>
 
-        <Link to="/products">
-          Marketplace
-        </Link>
+        {/* MOBILE MENU BUTTON */}
+        <button
+          type="button"
+          className="navbar-menu-toggle"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
 
-        {/* LOGGED IN USER */}
-        {isLoggedIn ? (
-          <>
-            {/* DASHBOARD */}
-            {user?.role === "farmer" && (
-              <Link to="/farmer-dashboard">
+        {/* NAVIGATION */}
+        <div className={`navbar-content ${menuOpen ? "menu-open" : ""}`}>
+          <div className="navbar-links">
+            <NavLink
+              to="/"
+              end
+              className={navLinkClass}
+              onClick={() => setMenuOpen(false)}
+            >
+              Home
+            </NavLink>
+
+            <NavLink
+              to="/products"
+              className={navLinkClass}
+              onClick={() => setMenuOpen(false)}
+            >
+              Marketplace
+            </NavLink>
+
+            {isLoggedIn && (
+              <NavLink
+                to={dashboardPath}
+                className={navLinkClass}
+                onClick={() => setMenuOpen(false)}
+              >
                 Dashboard
-              </Link>
+              </NavLink>
             )}
+          </div>
 
-            {user?.role === "buyer" && (
-              <Link to="/buyer-dashboard">
-                Dashboard
-              </Link>
+          <div className="navbar-actions">
+            {isLoggedIn ? (
+              <>
+                {/* USER PROFILE */}
+                <div className="navbar-profile">
+                  <div className="profile-avatar" aria-hidden="true">
+                    {initial}
+                  </div>
+
+                  <div className="profile-details">
+                    <span className="profile-name" title={displayName}>
+                      {displayName}
+                    </span>
+
+                    <span className="profile-role">
+                      <span className="profile-role-dot" />
+                      {user?.role || "Member"}
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleLogout}
+                  className="navbar-logout"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="17"
+                    height="17"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M10 17l5-5-5-5" />
+                    <path d="M15 12H3" />
+                    <path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6" />
+                  </svg>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="navbar-login"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Login
+                </Link>
+
+                <Link
+                  to="/register"
+                  className="navbar-register"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Get Started <span aria-hidden="true">→</span>
+                </Link>
+              </>
             )}
-
-            {/* USER INFO */}
-            <div className="navbar-user">
-
-              <span className="navbar-user-name">
-                👤 {user?.name}
-              </span>
-
-              <span className="navbar-user-role">
-                {user?.role}
-              </span>
-
-            </div>
-
-            {/* LOGOUT */}
-            <button
-              onClick={handleLogout}
-              className="navbar-logout"
-            >
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link
-              to="/login"
-              className="navbar-login"
-            >
-              Login
-            </Link>
-
-            <Link
-              to="/register"
-              className="navbar-register"
-            >
-              Register
-            </Link>
-          </>
-        )}
-
-      </div>
-
-    </nav>
+          </div>
+        </div>
+      </nav>
+    </header>
   );
 }
 

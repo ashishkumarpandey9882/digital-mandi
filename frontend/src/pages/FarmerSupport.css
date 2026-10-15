@@ -1,0 +1,144 @@
+.support-page {
+  min-height: 100vh;
+  background: #f5f8f4;
+  color: #21372a;
+  padding-bottom: 60px;
+}
+
+.support-hero {
+  padding: 55px 24px;
+  background: linear-gradient(120deg, #143d2b, #28734b);
+  color: white;
+}
+
+.support-hero > span {
+  color: #c7e8cd;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+}
+
+.support-hero h1 {
+  margin: 13px 0;
+  font-size: clamp(32px, 5vw, 46px);
+}
+
+.support-hero p {
+  margin: 0;
+  color: #e0eee3;
+  line-height: 1.7;
+}
+
+.support-content {
+  width: min(1050px, calc(100% - 36px));
+  margin: 35px auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.support-intro h2,
+.support-form h2 {
+  margin-top: 0;
+}
+
+.support-intro > p {
+  color: #66766a;
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.support-info {
+  margin-top: 25px;
+  padding: 18px;
+  border: 1px solid #dce8dc;
+  border-radius: 12px;
+  background: white;
+}
+
+.support-info p {
+  color: #68766b;
+  font-size: 13px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+.support-form {
+  display: grid;
+  gap: 17px;
+  padding: 26px;
+  border: 1px solid #e0e8df;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 10px 35px rgb(31 60 36 / 5%);
+}
+
+.support-form label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.support-form input,
+.support-form select,
+.support-form textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 13px;
+  border: 1px solid #dce5dc;
+  border-radius: 8px;
+  background: #fff;
+  color: #21372a;
+  font: inherit;
+  font-size: 14px;
+}
+
+.support-form input:focus,
+.support-form select:focus,
+.support-form textarea:focus {
+  outline: 2px solid #a9d4b1;
+  border-color: #397c4b;
+}
+
+.support-form textarea {
+  resize: vertical;
+}
+
+.support-form button {
+  padding: 13px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #216640;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.support-form button:hover {
+  background: #174d2e;
+}
+
+.support-status {
+  margin: 0;
+  color: #865b16;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  .support-hero {
+    padding: 40px 20px;
+  }
+
+  .support-content {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .support-form {
+    padding: 20px;
+  }
+}

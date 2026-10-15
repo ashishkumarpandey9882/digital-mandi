@@ -20,6 +20,11 @@ import ProductDetails from "./pages/ProductDetails";
 import PlaceOrder from "./pages/PlaceOrder";
 import BuyerOrders from "./pages/BuyerOrders";
 
+// New feature pages
+import MspRates from "./pages/MspRates";
+import FarmerSupport from "./pages/FarmerSupport";
+import GovernmentSchemes from "./pages/GovernmentSchemes";
+
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -29,36 +34,33 @@ function App() {
         <Navbar />
 
         <Routes>
+          {/* PUBLIC ROUTES */}
 
-          {/* ================= PUBLIC ROUTES ================= */}
+          <Route path="/" element={<Home />} />
+
+          <Route path="/products" element={<Products />} />
+
+          <Route path="/login" element={<Login />} />
+
+          <Route path="/register" element={<Register />} />
+
+          <Route path="/product/:id" element={<ProductDetails />} />
+
+          {/* NEW FEATURE ROUTES */}
+
+          <Route path="/msp-rates" element={<MspRates />} />
 
           <Route
-            path="/"
-            element={<Home />}
+            path="/farmer-support"
+            element={<FarmerSupport />}
           />
 
           <Route
-            path="/products"
-            element={<Products />}
+            path="/schemes"
+            element={<GovernmentSchemes />}
           />
 
-          <Route
-            path="/login"
-            element={<Login />}
-          />
-
-          <Route
-            path="/register"
-            element={<Register />}
-          />
-
-          <Route
-            path="/product/:id"
-            element={<ProductDetails />}
-          />
-
-
-          {/* ================= FARMER ROUTES ================= */}
+          {/* FARMER ROUTES */}
 
           <Route
             path="/farmer-dashboard"
@@ -105,8 +107,7 @@ function App() {
             }
           />
 
-
-          {/* ================= BUYER ROUTES ================= */}
+          {/* BUYER ROUTES */}
 
           <Route
             path="/buyer-dashboard"
@@ -134,9 +135,7 @@ function App() {
               </ProtectedRoute>
             }
           />
-
         </Routes>
-
       </AuthProvider>
     </BrowserRouter>
   );

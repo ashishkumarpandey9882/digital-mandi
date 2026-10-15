@@ -1,0 +1,163 @@
+.schemes-page {
+  min-height: 100vh;
+  padding-bottom: 55px;
+  background: #f5f8f4;
+  color: #21372a;
+}
+
+.schemes-hero {
+  padding: 56px 24px;
+  background: linear-gradient(120deg, #143d2b, #28734b);
+  color: white;
+}
+
+.schemes-hero > span,
+.schemes-heading > div > span {
+  color: #c7e8cd;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.schemes-hero h1 {
+  margin: 13px 0;
+  font-size: clamp(32px, 5vw, 46px);
+}
+
+.schemes-hero p {
+  max-width: 650px;
+  margin: 0;
+  color: #e0eee3;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.schemes-content {
+  width: min(1150px, calc(100% - 36px));
+  margin: 36px auto;
+}
+
+.schemes-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.schemes-heading > div > span {
+  color: #5d966e;
+}
+
+.schemes-heading h2 {
+  margin: 8px 0 0;
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.schemes-heading input {
+  width: min(300px, 100%);
+  padding: 13px;
+  border: 1px solid #dce5dc;
+  border-radius: 9px;
+  background: white;
+  font: inherit;
+  font-size: 13px;
+}
+
+.schemes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.scheme-card {
+  padding: 24px;
+  border: 1px solid #e0e8df;
+  border-radius: 14px;
+  background: white;
+  box-shadow: 0 8px 28px rgb(32 60 36 / 4%);
+}
+
+.scheme-card-mark {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 10px;
+  background: #edf5eb;
+  color: #287044;
+  font-size: 22px;
+}
+
+.scheme-card h3 {
+  margin: 17px 0 10px;
+  font-size: 19px;
+}
+
+.scheme-card > p,
+.scheme-detail p {
+  color: #68776b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.scheme-detail {
+  margin-top: 17px;
+}
+
+.scheme-detail strong {
+  font-size: 12px;
+  color: #315c3b;
+}
+
+.scheme-detail p {
+  margin: 6px 0 0;
+}
+
+.scheme-card > a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #17623b;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.scheme-card > a:hover {
+  text-decoration: underline;
+}
+
+.schemes-empty,
+.schemes-disclaimer {
+  color: #778379;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.schemes-disclaimer {
+  margin-top: 25px;
+}
+
+@media (max-width: 700px) {
+  .schemes-hero {
+    padding: 40px 20px;
+  }
+
+  .schemes-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .schemes-heading input {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .schemes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scheme-card {
+    padding: 20px;
+  }
+}
