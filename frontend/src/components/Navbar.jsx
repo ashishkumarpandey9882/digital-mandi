@@ -24,6 +24,8 @@ function Navbar() {
   const navLinkClass = ({ isActive }) =>
     `navbar-link${isActive ? " active" : ""}`;
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <header className="site-header">
       <nav className="navbar">
@@ -32,7 +34,7 @@ function Navbar() {
           to="/"
           className="navbar-brand"
           aria-label="Digital Mandi home"
-          onClick={() => setMenuOpen(false)}
+          onClick={closeMenu}
         >
           <span className="brand-icon" aria-hidden="true">
             🌾
@@ -66,7 +68,7 @@ function Navbar() {
               to="/"
               end
               className={navLinkClass}
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
             >
               Home
             </NavLink>
@@ -74,19 +76,30 @@ function Navbar() {
             <NavLink
               to="/products"
               className={navLinkClass}
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
             >
               Marketplace
             </NavLink>
 
             {isLoggedIn && (
-              <NavLink
-                to={dashboardPath}
-                className={navLinkClass}
-                onClick={() => setMenuOpen(false)}
-              >
-                Dashboard
-              </NavLink>
+              <>
+                <NavLink
+                  to={dashboardPath}
+                  className={navLinkClass}
+                  onClick={closeMenu}
+                >
+                  Dashboard
+                </NavLink>
+
+                <NavLink
+                  to="/ai-assistant"
+                  className={navLinkClass}
+                  onClick={closeMenu}
+                >
+                  <span aria-hidden="true">🤖 </span>
+                  AI Assistant
+                </NavLink>
+              </>
             )}
           </div>
 
@@ -139,7 +152,7 @@ function Navbar() {
                 <Link
                   to="/login"
                   className="navbar-login"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={closeMenu}
                 >
                   Login
                 </Link>
@@ -147,7 +160,7 @@ function Navbar() {
                 <Link
                   to="/register"
                   className="navbar-register"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={closeMenu}
                 >
                   Get Started <span aria-hidden="true">→</span>
                 </Link>

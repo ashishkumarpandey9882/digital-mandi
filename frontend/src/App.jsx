@@ -26,6 +26,7 @@ import FarmerSupport from "./pages/FarmerSupport";
 import GovernmentSchemes from "./pages/GovernmentSchemes";
 
 import { AuthProvider } from "./context/AuthContext";
+import AIAssistant from "./pages/AIAssistant";
 
 function App() {
   return (
@@ -132,6 +133,14 @@ function App() {
             element={
               <ProtectedRoute role="buyer">
                 <PlaceOrder />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/ai-assistant"
+            element={
+              <ProtectedRoute>
+              <AIAssistant />
               </ProtectedRoute>
             }
           />

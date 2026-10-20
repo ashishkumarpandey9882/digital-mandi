@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
@@ -9,6 +10,7 @@ const productRoutes = require("./routes/productRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const mspRoutes = require("./routes/mspRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
+const aiRoutes = require("./routes/aiRoutes"); // NEW
 
 const app = express();
 
@@ -25,6 +27,7 @@ app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/msp", mspRoutes);
 app.use("/api/payments", paymentRoutes);
+app.use("/api/ai", aiRoutes); // NEW
 
 // Root route
 app.get("/", (req, res) => {
