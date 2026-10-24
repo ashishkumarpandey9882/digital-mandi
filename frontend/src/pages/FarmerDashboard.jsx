@@ -1,8 +1,8 @@
-
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import api from "../services/api";
+import BackButton from "../components/BackButton";
 import "./FarmerDashboard.css";
 
 const getId = (value) => {
@@ -209,6 +209,15 @@ function FarmerDashboard() {
 
   return (
     <main className="fd-page">
+
+      {/* BACK BUTTON */}
+      <div className="fd-back-row">
+        <BackButton
+          fallback="/"
+          label="Back to Home"
+        />
+      </div>
+
       <section className="fd-hero">
         <div className="fd-hero-content">
           <span className="fd-eyebrow">

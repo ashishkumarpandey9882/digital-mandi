@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import BackButton from "../components/BackButton";
 import "./MyProducts.css";
 
 function MyProducts() {
@@ -122,6 +123,14 @@ function MyProducts() {
 
   return (
     <div className="my-products-page">
+
+      {/* BACK BUTTON */}
+      <div className="my-products-back-row">
+        <BackButton
+          fallback="/farmer-dashboard"
+          label="Back to Dashboard"
+        />
+      </div>
 
       {/* HEADER */}
       <div className="my-products-header">

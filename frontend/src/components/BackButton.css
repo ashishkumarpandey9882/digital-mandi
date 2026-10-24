@@ -1,0 +1,33 @@
+
+.app-back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid #dce8dd;
+  border-radius: 9px;
+  background: #fff;
+  color: #176b45;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.app-back-button:hover {
+  border-color: #b8d8bf;
+  background: #edf7ef;
+}
+
+.app-back-button span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.app-back-button:focus-visible {
+  outline: 2px solid #21834e;
+  outline-offset: 3px;
+}

@@ -241,3 +241,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+.register-wrapper {
+  position: relative;
+}
+
+.register-back-row {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .register-back-row {
+    top: 10px;
+    left: 10px;
+  }
+}

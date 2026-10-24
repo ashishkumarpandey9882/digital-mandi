@@ -577,3 +577,31 @@
     transition-duration: .01ms !important;
   }
 }
+/* Back Button */
+.fd-back-row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .fd-back-row {
+    padding: 12px 16px 0;
+  }
+}
+/* Back Button */
+.fd-back-row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .fd-back-row {
+    padding: 12px 16px 0;
+  }
+}

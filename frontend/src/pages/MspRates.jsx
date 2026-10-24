@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import BackButton from "../components/BackButton";
 import "./MspRates.css";
 
 const API_BASE = (
@@ -109,6 +110,10 @@ function MspRates() {
 
   return (
     <main className="msp-page">
+      <div className="msp-back-row">
+        <BackButton fallback="/" label="Back to Home" />
+      </div>
+
       <section className="msp-hero">
         <div className="msp-hero-content">
           <span className="msp-eyebrow">PRICE TRANSPARENCY</span>

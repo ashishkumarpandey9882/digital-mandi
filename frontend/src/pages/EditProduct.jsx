@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../services/api";
+import BackButton from "../components/BackButton";
 import "./EditProduct.css";
 
 function EditProduct() {
@@ -122,6 +123,13 @@ function EditProduct() {
   if (loading) {
     return (
       <div className="edit-product-message">
+        <div className="edit-product-back-row">
+          <BackButton
+            fallback="/my-products"
+            label="Back to My Products"
+          />
+        </div>
+
         Loading product...
       </div>
     );
@@ -130,6 +138,13 @@ function EditProduct() {
   if (error && !cropName) {
     return (
       <div className="edit-product-message error">
+        <div className="edit-product-back-row">
+          <BackButton
+            fallback="/my-products"
+            label="Back to My Products"
+          />
+        </div>
+
         {error}
       </div>
     );
@@ -137,6 +152,14 @@ function EditProduct() {
 
   return (
     <div className="edit-product-page">
+
+      {/* BACK BUTTON */}
+      <div className="edit-product-back-row">
+        <BackButton
+          fallback="/my-products"
+          label="Back to My Products"
+        />
+      </div>
 
       <div className="edit-product-container">
 

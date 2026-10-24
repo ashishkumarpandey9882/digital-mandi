@@ -1,6 +1,6 @@
-
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import BackButton from "../components/BackButton";
 import "./AIAssistant.css";
 
 const API_BASE = (
@@ -88,6 +88,15 @@ function AIAssistant() {
 
   return (
     <main className="ai-page">
+
+      {/* BACK BUTTON */}
+      <div className="ai-back-row">
+        <BackButton
+          fallback="/farmer-dashboard"
+          label="Back to Dashboard"
+        />
+      </div>
+
       <section className="ai-shell">
         <header className="ai-header">
           <div className="ai-avatar">✳</div>

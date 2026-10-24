@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BackButton from "../components/BackButton";
 import "./GovernmentSchemes.css";
 
 const schemes = [
@@ -59,6 +60,15 @@ function GovernmentSchemes() {
 
   return (
     <main className="schemes-page">
+
+      {/* BACK BUTTON */}
+      <div className="schemes-back-row">
+        <BackButton
+          fallback="/farmer-dashboard"
+          label="Back to Dashboard"
+        />
+      </div>
+
       <section className="schemes-hero">
         <span>FARMER RESOURCES</span>
         <h1>Government Schemes</h1>

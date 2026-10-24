@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BackButton from "../components/BackButton";
 import "./FarmerSupport.css";
 
 function FarmerSupport() {
@@ -23,6 +24,15 @@ function FarmerSupport() {
 
   return (
     <main className="support-page">
+
+      {/* BACK BUTTON */}
+      <div className="support-back-row">
+        <BackButton
+          fallback="/farmer-dashboard"
+          label="Back to Dashboard"
+        />
+      </div>
+
       <section className="support-hero">
         <span>WE ARE HERE TO HELP</span>
         <h1>Farmer Support</h1>
@@ -104,7 +114,11 @@ function FarmerSupport() {
 
           <button type="submit">Submit support request</button>
 
-          {status && <p className="support-status" role="status">{status}</p>}
+          {status && (
+            <p className="support-status" role="status">
+              {status}
+            </p>
+          )}
         </form>
       </section>
     </main>

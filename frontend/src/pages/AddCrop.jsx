@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 import { useAuth } from "../context/AuthContext";
+import BackButton from "../components/BackButton";
 import "./AddCrop.css";
 
 function AddCrop() {
@@ -75,6 +76,14 @@ function AddCrop() {
 
   return (
     <div className="add-crop-page">
+
+      {/* BACK BUTTON */}
+      <div className="add-crop-back-row">
+        <BackButton
+          fallback="/farmer-dashboard"
+          label="Back to Dashboard"
+        />
+      </div>
 
       <div className="add-crop-container">
 

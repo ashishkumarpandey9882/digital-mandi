@@ -1,7 +1,9 @@
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../services/api";
 import "./Register.css";
+import BackButton from "../components/BackButton";
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -45,13 +47,12 @@ function Register() {
       setTimeout(() => {
         navigate("/login");
       }, 1000);
-
     } catch (error) {
       console.error("Registration failed:", error);
 
       setError(
         error.response?.data?.message ||
-        "Registration failed"
+          "Registration failed"
       );
     } finally {
       setLoading(false);
@@ -60,13 +61,17 @@ function Register() {
 
   return (
     <div className="register-page">
-
       <div className="register-wrapper">
+        {/* BACK BUTTON */}
+        <div className="register-back-row">
+          <BackButton
+            fallback="/"
+            label="Back to Home"
+          />
+        </div>
 
         {/* LEFT SIDE */}
-
         <div className="register-info">
-
           <div className="register-logo">
             🌾
           </div>
@@ -81,7 +86,6 @@ function Register() {
           </p>
 
           <div className="register-points">
-
             <div className="register-point">
               <span>🌾</span>
               Sell your agricultural products
@@ -96,16 +100,11 @@ function Register() {
               <span>📊</span>
               Transparent MSP-based pricing
             </div>
-
           </div>
-
         </div>
 
-
         {/* RIGHT SIDE */}
-
         <div className="register-form-section">
-
           <h1>Create Account</h1>
 
           <p className="register-subtitle">
@@ -116,9 +115,7 @@ function Register() {
             className="register-form"
             onSubmit={handleRegister}
           >
-
             {/* NAME */}
-
             <div className="register-field">
               <label>Full Name</label>
 
@@ -132,9 +129,7 @@ function Register() {
               />
             </div>
 
-
             {/* EMAIL */}
-
             <div className="register-field">
               <label>Email Address</label>
 
@@ -148,9 +143,7 @@ function Register() {
               />
             </div>
 
-
             {/* PASSWORD */}
-
             <div className="register-field">
               <label>Password</label>
 
@@ -164,9 +157,7 @@ function Register() {
               />
             </div>
 
-
             {/* ROLE */}
-
             <div className="register-field">
               <label>Account Type</label>
 
@@ -185,11 +176,8 @@ function Register() {
               </select>
             </div>
 
-
             {/* STATE + DISTRICT */}
-
             <div className="register-row">
-
               <div className="register-field">
                 <label>State</label>
 
@@ -215,12 +203,9 @@ function Register() {
                   required
                 />
               </div>
-
             </div>
 
-
             {/* PHONE */}
-
             <div className="register-field">
               <label>Phone Number</label>
 
@@ -234,27 +219,21 @@ function Register() {
               />
             </div>
 
-
             {/* ERROR */}
-
             {error && (
               <p className="register-error">
                 {error}
               </p>
             )}
 
-
             {/* SUCCESS */}
-
             {success && (
               <p className="register-success">
                 {success}
               </p>
             )}
 
-
-            {/* BUTTON */}
-
+            {/* REGISTER BUTTON */}
             <button
               type="submit"
               className="register-button"
@@ -264,21 +243,17 @@ function Register() {
                 ? "Creating Account..."
                 : "Create Account"}
             </button>
-
           </form>
 
-
+          {/* LOGIN LINK */}
           <p className="register-login">
             Already have an account?{" "}
             <Link to="/login">
               Login
             </Link>
           </p>
-
         </div>
-
       </div>
-
     </div>
   );
 }

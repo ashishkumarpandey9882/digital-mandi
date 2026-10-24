@@ -1,15 +1,16 @@
+
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import api from "../services/api";
 import "./Login.css";
 import { useAuth } from "../context/AuthContext";
+import BackButton from "../components/BackButton";
 
 function Login() {
   const { login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -22,33 +23,24 @@ function Login() {
       setLoading(true);
       setError("");
 
-      // API call
       const response = await api.post("/auth/login", {
         email,
         password,
       });
 
-      // Save user + JWT through AuthContext
-      login(
-        response.data.user,
-        response.data.token
-      );
-
-      console.log("Login successful:", response.data);
+      login(response.data.user, response.data.token);
 
       if (response.data.user.role === "farmer") {
-            navigate("/farmer-dashboard");
-        } else {
-            navigate("/products");
-        }
-
+        navigate("/farmer-dashboard");
+      } else {
+        navigate("/products");
+      }
     } catch (error) {
       console.error("Login failed:", error);
 
       setError(
         error.response?.data?.message || "Login failed"
       );
-
     } finally {
       setLoading(false);
     }
@@ -56,12 +48,18 @@ function Login() {
 
   return (
     <div className="login-page">
-
       <div className="login-wrapper">
+
+        {/* BACK BUTTON */}
+        <div className="login-back-row">
+          <BackButton
+            fallback="/"
+            label="Back to Home"
+          />
+        </div>
 
         {/* LEFT SIDE */}
         <div className="login-info">
-
           <div className="login-logo">
             🌾
           </div>
@@ -78,12 +76,10 @@ function Login() {
           </p>
 
           <div className="login-points">
-
             <div className="login-point">
               <span className="login-point-icon">
                 🌾
               </span>
-
               Direct farmer connection
             </div>
 
@@ -91,7 +87,6 @@ function Login() {
               <span className="login-point-icon">
                 📊
               </span>
-
               Transparent MSP pricing
             </div>
 
@@ -99,18 +94,13 @@ function Login() {
               <span className="login-point-icon">
                 🚚
               </span>
-
               Reliable transportation
             </div>
-
           </div>
-
         </div>
-
 
         {/* RIGHT SIDE */}
         <div className="login-form-section">
-
           <h1>Login</h1>
 
           <p className="login-subtitle">
@@ -121,16 +111,11 @@ function Login() {
             className="login-form"
             onSubmit={handleLogin}
           >
-
             {/* EMAIL */}
             <div className="login-field">
-
-              <label>
-                Email Address
-              </label>
+              <label>Email Address</label>
 
               <div className="login-input-wrapper">
-
                 <span className="login-input-icon">
                   ✉️
                 </span>
@@ -138,27 +123,18 @@ function Login() {
                 <input
                   type="email"
                   value={email}
-                  onChange={(e) =>
-                    setEmail(e.target.value)
-                  }
+                  onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   required
                 />
-
               </div>
-
             </div>
-
 
             {/* PASSWORD */}
             <div className="login-field">
-
-              <label>
-                Password
-              </label>
+              <label>Password</label>
 
               <div className="login-input-wrapper">
-
                 <span className="login-input-icon">
                   🔒
                 </span>
@@ -166,17 +142,12 @@ function Login() {
                 <input
                   type="password"
                   value={password}
-                  onChange={(e) =>
-                    setPassword(e.target.value)
-                  }
+                  onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   required
                 />
-
               </div>
-
             </div>
-
 
             {/* ERROR */}
             {error && (
@@ -184,7 +155,6 @@ function Login() {
                 {error}
               </p>
             )}
-
 
             {/* LOGIN BUTTON */}
             <button
@@ -196,25 +166,17 @@ function Login() {
                 ? "Logging in..."
                 : "Login to Digital Mandi"}
             </button>
-
           </form>
-
 
           {/* REGISTER LINK */}
           <p className="login-register">
-
             Don't have an account?{" "}
-
             <Link to="/register">
               Create an account
             </Link>
-
           </p>
-
         </div>
-
       </div>
-
     </div>
   );
 }
