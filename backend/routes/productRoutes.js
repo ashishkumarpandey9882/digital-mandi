@@ -3,6 +3,7 @@ const express = require("express");
 const {
   addProduct,
   getProducts,
+  getMyProducts,
   getProductById,
   updateProduct,
   deleteProduct,
@@ -23,6 +24,11 @@ router.post("/", protect, addProduct);
 // Public
 // ===============================
 router.get("/", getProducts);
+
+// ===============================
+// GET LOGGED-IN FARMER'S PRODUCTS
+// ===============================
+router.get("/my-products", protect, getMyProducts);
 
 // ===============================
 // GET SINGLE PRODUCT

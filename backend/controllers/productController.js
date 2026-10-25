@@ -171,6 +171,62 @@ const getProducts = async (req, res) => {
   }
 };
 
+// ===============================
+// GET LOGGED-IN FARMER'S PRODUCTS
+// ===============================
+const getMyProducts = async (req, res) => {
+  try {
+    if (req.user.role !== "farmer") {
+      return res.status(403).json({
+        message: "Only farmers can access their products",
+      });
+    }
+
+    const products = await Product.find({
+      farmer: req.user.id,
+    })
+      .lean();
+
+    const productsWithCurrentMSP = await Promise.all(
+      products.map(async (product) => {
+        const msp = await MSP.findOne({
+          cropName: {
+            $regex: `^${product.cropName.trim()}$`,
+            $options: "i",
+          },
+          isActive: true,
+        })
+          .sort({
+            year: -1,
+            effectiveFrom: -1,
+          })
+          .lean();
+
+        return {
+          ...product,
+          currentMsp: msp
+            ? {
+                price: msp.mspPrice,
+                unit: msp.unit,
+                season: msp.season,
+                year: msp.year,
+              }
+            : null,
+        };
+      })
+    );
+
+    return res.status(200).json({
+      message: "Your products fetched successfully",
+      products: productsWithCurrentMSP,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Failed to fetch your products",
+      error: error.message,
+    });
+  }
+};
 
 // ===============================
 // UPDATE PRODUCT
@@ -365,6 +421,7 @@ const getProductById = async (req, res) => {
 module.exports = {
   addProduct,
   getProducts,
+  getMyProducts,
   updateProduct,
   deleteProduct,
   getProductById,

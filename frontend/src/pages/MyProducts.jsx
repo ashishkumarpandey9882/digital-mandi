@@ -22,15 +22,9 @@ function MyProducts() {
         setLoading(true);
         setError("");
 
-        const response = await api.get("/products");
+        const response = await api.get("/products/my-products");
 
-        const allProducts = response.data.products;
-
-        const myProducts = allProducts.filter(
-          (product) => product.farmer?._id === user?.id
-        );
-
-        setProducts(myProducts);
+        setProducts(response.data.products);
       } catch (error) {
         console.error(
           "Failed to fetch products:",
