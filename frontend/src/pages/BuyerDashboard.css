@@ -2751,3 +2751,190 @@
     transition: none !important;
   }
 }
+
+/* Fix: Buyer dashboard horizontal overflow */
+.buyer-app {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: clip;
+}
+
+.buyer-main {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.buyer-content {
+  width: 100%;
+  min-width: 0;
+  max-width: 1600px;
+  box-sizing: border-box;
+}
+
+.buyer-topbar {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.buyer-dashboard-columns,
+.buyer-center-column,
+.buyer-right-column,
+.buyer-panel,
+.buyer-side-panel {
+  min-width: 0;
+}
+
+.buyer-promo,
+.buyer-welcome-row,
+.buyer-panel-heading,
+.buyer-side-panel-heading {
+  min-width: 0;
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .buyer-app,
+  .buyer-main,
+  .buyer-content {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
+/* Fix: Back button must stay outside the dashboard flex layout */
+.buyer-back-row {
+  position: relative;
+  z-index: 6;
+  width: 100%;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  background: #f7f9f7;
+}
+
+.buyer-app {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+  overflow-x: clip;
+}
+
+.buyer-sidebar {
+  flex: 0 0 230px;
+}
+
+.buyer-main {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+}
+
+@media (max-width: 1150px) {
+  .buyer-sidebar {
+    flex-basis: 205px;
+  }
+}
+
+@media (max-width: 900px) {
+  .buyer-sidebar {
+    flex-basis: 74px;
+  }
+}
+
+@media (max-width: 600px) {
+  .buyer-back-row {
+    padding: 10px 14px;
+  }
+
+  .buyer-sidebar {
+    flex-basis: auto;
+  }
+
+  .buyer-main {
+    width: 100%;
+  }
+}
+
+/* FIX: Buyer Dashboard shifted to the right */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.buyer-app {
+  display: flex;
+  position: relative;
+  left: auto;
+  right: auto;
+  transform: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  overflow-x: clip;
+}
+
+.buyer-sidebar {
+  position: sticky;
+  flex: 0 0 230px;
+  width: 230px;
+  min-width: 0;
+}
+
+.buyer-main {
+  flex: 1 1 0;
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
+  margin-left: 0;
+}
+
+.buyer-content {
+  width: 100%;
+  max-width: 1600px;
+  min-width: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1150px) {
+  .buyer-sidebar {
+    flex-basis: 205px;
+    width: 205px;
+  }
+}
+
+@media (max-width: 900px) {
+  .buyer-sidebar {
+    flex-basis: 74px;
+    width: 74px;
+  }
+}
+
+@media (max-width: 600px) {
+  .buyer-app {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .buyer-sidebar {
+    width: 100%;
+  }
+
+  .buyer-main,
+  .buyer-content {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+}

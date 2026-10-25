@@ -227,9 +227,8 @@ function BuyerDashboard() {
   };
 
   return (
-    <main className="buyer-app">
-
-      {/* BACK BUTTON */}
+    <>
+      {/* BACK BUTTON: keep it outside the dashboard flex layout */}
       <div className="buyer-back-row">
         <BackButton
           fallback="/"
@@ -237,6 +236,7 @@ function BuyerDashboard() {
         />
       </div>
 
+      <main className="buyer-app">
       <aside className="buyer-sidebar">
         <Link to="/buyer-dashboard" className="buyer-brand">
           <span className="buyer-brand-mark">🌱</span>
@@ -594,7 +594,8 @@ function BuyerDashboard() {
           </footer>
         </div>
       </section>
-    </main>
+      </main>
+    </>
   );
 }
 
