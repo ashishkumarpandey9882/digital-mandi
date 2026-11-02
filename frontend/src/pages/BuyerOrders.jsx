@@ -1,3 +1,4 @@
+
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../components/BackButton";
@@ -12,6 +13,10 @@ function BuyerOrders() {
   const [error, setError] = useState("");
   const [paymentError, setPaymentError] = useState("");
   const [payingOrderId, setPayingOrderId] = useState(null);
+
+  // Cancel order states
+  const [cancellingOrderId, setCancellingOrderId] = useState(null);
+  const [cancelError, setCancelError] = useState("");
 
   // Search and filters
   const [search, setSearch] = useState("");
@@ -43,6 +48,40 @@ function BuyerOrders() {
       );
     } finally {
       setLoading(false);
+    }
+  };
+
+  // ================= CANCEL ORDER =================
+
+  const handleCancelOrder = async (order) => {
+    if (order.status?.toLowerCase() !== "pending") {
+      return;
+    }
+
+    const confirmed = window.confirm(
+      "Are you sure you want to cancel this order?"
+    );
+
+    if (!confirmed) return;
+
+    setCancelError("");
+    setCancellingOrderId(order._id);
+
+    try {
+      await api.put(`/orders/${order._id}/cancel`);
+
+      window.alert("Order cancelled successfully!");
+
+      await fetchOrders();
+    } catch (err) {
+      console.error("Failed to cancel order:", err);
+
+      setCancelError(
+        err.response?.data?.message ||
+          "Unable to cancel order. Please try again."
+      );
+    } finally {
+      setCancellingOrderId(null);
     }
   };
 
@@ -419,6 +458,23 @@ function BuyerOrders() {
         </div>
       )}
 
+      {/* CANCEL ORDER ERROR */}
+
+      {cancelError && (
+        <div className="orders-error" role="alert">
+          <span>⚠️</span>
+
+          <div>
+            <strong>Order cancellation failed</strong>
+            <p>{cancelError}</p>
+          </div>
+
+          <button onClick={() => setCancelError("")}>
+            Dismiss
+          </button>
+        </div>
+      )}
+
       {/* STATISTICS */}
 
       {!error && (
@@ -523,6 +579,7 @@ function BuyerOrders() {
                 <option value="pending">Pending</option>
                 <option value="accepted">Accepted</option>
                 <option value="rejected">Rejected</option>
+                <option value="cancelled">Cancelled</option>
               </select>
             </div>
 
@@ -722,6 +779,9 @@ function BuyerOrders() {
 
                     {status === "rejected" &&
                       "❌ Order rejected by farmer"}
+
+                    {status === "cancelled" &&
+                      "🚫 Order cancelled"}
                   </div>
 
                   <div className="order-payment-actions">
@@ -744,6 +804,24 @@ function BuyerOrders() {
                         Payment available after farmer approval
                       </span>
                     ) : null}
+
+                    {/* CANCEL ORDER BUTTON */}
+
+                    {status === "pending" && (
+                      <button
+                        type="button"
+                        className="cancel-order-btn"
+                        onClick={() => handleCancelOrder(order)}
+                        disabled={
+                          cancellingOrderId !== null ||
+                          payingOrderId !== null
+                        }
+                      >
+                        {cancellingOrderId === order._id
+                          ? "Cancelling..."
+                          : "Cancel Order"}
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
