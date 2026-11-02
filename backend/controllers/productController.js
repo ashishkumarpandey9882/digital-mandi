@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Product = require("../models/Product");
 const MSP = require("../models/MSP");
 
@@ -365,6 +366,13 @@ const getProductById = async (req, res) => {
   try {
     const productId = req.params.id;
 
+
+    // Validate MongoDB ObjectId
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
+  return res.status(400).json({
+    message: "Invalid product ID"
+  });
+}
     const product = await Product.findById(productId)
       .populate("farmer", "name email phone")
       .lean();

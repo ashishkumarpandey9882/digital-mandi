@@ -10,6 +10,7 @@ const {
 } = require("../controllers/productController");
 
 const protect = require("../middleware/authMiddleware");
+const farmerOnly = protect.farmerOnly;
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ const router = express.Router();
 // ADD PRODUCT
 // Only logged-in user
 // ===============================
-router.post("/", protect, addProduct);
+router.post("/", protect, farmerOnly, addProduct);
 
 // ===============================
 // GET ALL PRODUCTS
@@ -28,7 +29,7 @@ router.get("/", getProducts);
 // ===============================
 // GET LOGGED-IN FARMER'S PRODUCTS
 // ===============================
-router.get("/my-products", protect, getMyProducts);
+router.get("/my-products", protect, farmerOnly, getMyProducts);
 
 // ===============================
 // GET SINGLE PRODUCT
@@ -40,12 +41,12 @@ router.get("/:id", getProductById);
 // UPDATE PRODUCT
 // Only logged-in farmer
 // ===============================
-router.put("/:id", protect, updateProduct);
+router.put("/:id", protect, farmerOnly, updateProduct);
 
 // ===============================
 // DELETE PRODUCT
 // Only logged-in farmer
 // ===============================
-router.delete("/:id", protect, deleteProduct);
+router.delete("/:id", protect, farmerOnly, deleteProduct);
 
 module.exports = router;

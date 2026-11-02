@@ -1,8 +1,8 @@
+
 const jwt = require("jsonwebtoken");
 
 const protect = (req, res, next) => {
   try {
-    // Authorization header check
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
@@ -11,7 +11,6 @@ const protect = (req, res, next) => {
       });
     }
 
-    // Bearer TOKEN
     const token = authHeader.split(" ")[1];
 
     if (!token) {
@@ -20,16 +19,12 @@ const protect = (req, res, next) => {
       });
     }
 
-    // Verify token
     const decoded = jwt.verify(
       token,
       process.env.JWT_SECRET
     );
 
-    // User information request me store
     req.user = decoded;
-
-    // Next middleware/controller
     next();
 
   } catch (error) {
@@ -39,4 +34,16 @@ const protect = (req, res, next) => {
   }
 };
 
+// Farmer-only authorization
+const farmerOnly = (req, res, next) => {
+  if (req.user?.role !== "farmer") {
+    return res.status(403).json({
+      message: "Access denied. Only farmers are allowed",
+    });
+  }
+
+  next();
+};
+
 module.exports = protect;
+module.exports.farmerOnly = farmerOnly;
