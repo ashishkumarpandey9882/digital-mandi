@@ -7,6 +7,7 @@ const {
   getFarmerOrders,
   acceptOrder,
   rejectOrder,
+  cancelOrder,
 } = require("../controllers/orderController");
 
 const protect = require("../middleware/authMiddleware");
@@ -67,6 +68,16 @@ router.put(
   "/:id/reject",
   protect,
   rejectOrder
+);
+
+// =====================================================
+// CANCEL ORDER
+// Only the buyer who owns a pending order can cancel it
+// =====================================================
+router.put(
+  "/:id/cancel",
+  protect,
+  cancelOrder
 );
 
 module.exports = router;

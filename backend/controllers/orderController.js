@@ -556,6 +556,77 @@ const rejectOrder = async (req, res) => {
   }
 };
 
+ // =====================================================
+// CANCEL ORDER
+// Only the buyer who owns a pending order can cancel it.
+// =====================================================
+const cancelOrder = async (req, res) => {
+  try {
+    const orderId = req.params.id;
+
+    if (!mongoose.Types.ObjectId.isValid(orderId)) {
+      return res.status(400).json({
+        message: "Invalid order ID",
+      });
+    }
+
+    if (req.user.role !== "buyer") {
+      return res.status(403).json({
+        message: "Only buyers can cancel orders",
+      });
+    }
+
+    const order = await Order.findOneAndUpdate(
+      {
+        _id: orderId,
+        buyer: req.user.id,
+        status: "pending",
+      },
+      {
+        $set: {
+          status: "cancelled",
+        },
+      },
+      {
+        returnDocument: "after",
+        runValidators: true,
+      }
+    );
+
+    if (!order) {
+      const existingOrder = await Order.findById(orderId);
+
+      if (!existingOrder) {
+        return res.status(404).json({
+          message: "Order not found",
+        });
+      }
+
+      if (existingOrder.buyer.toString() !== req.user.id) {
+        return res.status(403).json({
+          message: "You are not allowed to cancel this order",
+        });
+      }
+
+      return res.status(400).json({
+        message: "Only pending orders can be cancelled",
+      });
+    }
+
+    return res.status(200).json({
+      message: "Order cancelled successfully",
+      order,
+    });
+  } catch (error) {
+    console.error("Cancel Order Error:", error);
+
+    return res.status(500).json({
+      message: "Order cancellation failed",
+    });
+  }
+};
+
+
 // =====================================================
 // GET MY ORDERS
 // =====================================================
@@ -632,6 +703,7 @@ module.exports = {
   calculateOrderDistance,
   acceptOrder,
   rejectOrder,
+  cancelOrder,
   getMyOrders,
   getFarmerOrders,
 };
