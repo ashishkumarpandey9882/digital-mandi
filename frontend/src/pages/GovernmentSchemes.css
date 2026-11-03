@@ -1,12 +1,42 @@
+
+/* =====================================
+   GOVERNMENT SCHEMES PAGE
+===================================== */
+
 .schemes-page {
   min-height: 100vh;
+  width: 100%;
   padding-bottom: 55px;
   background: #f5f8f4;
   color: #21372a;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
+.schemes-page *,
+.schemes-page *::before,
+.schemes-page *::after {
+  box-sizing: border-box;
+}
+
+/* =====================================
+   BACK BUTTON
+===================================== */
+
+.schemes-back-row {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px 0;
+}
+
+/* =====================================
+   HERO SECTION
+===================================== */
+
 .schemes-hero {
-  padding: 56px 24px;
+  width: 100%;
+  padding: 58px 24px;
   background: linear-gradient(120deg, #143d2b, #28734b);
   color: white;
 }
@@ -21,7 +51,10 @@
 
 .schemes-hero h1 {
   margin: 13px 0;
-  font-size: clamp(32px, 5vw, 46px);
+  font-size: clamp(30px, 5vw, 46px);
+  line-height: 1.15;
+  font-weight: 800;
+  overflow-wrap: anywhere;
 }
 
 .schemes-hero p {
@@ -32,17 +65,29 @@
   line-height: 1.8;
 }
 
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
 .schemes-content {
-  width: min(1150px, calc(100% - 36px));
-  margin: 36px auto;
+  width: min(1150px, calc(100% - 40px));
+  margin: 38px auto;
 }
+
+/* =====================================
+   HEADING AND SEARCH
+===================================== */
 
 .schemes-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  margin-bottom: 24px;
+  gap: 22px;
+  margin-bottom: 25px;
+}
+
+.schemes-heading > div {
+  min-width: 0;
 }
 
 .schemes-heading > div > span {
@@ -51,37 +96,74 @@
 
 .schemes-heading h2 {
   margin: 8px 0 0;
+  color: #21372a;
   font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.3;
+  font-weight: 800;
 }
 
 .schemes-heading input {
-  width: min(300px, 100%);
-  padding: 13px;
+  width: min(320px, 100%);
+  min-width: 0;
+  min-height: 46px;
+  padding: 13px 15px;
   border: 1px solid #dce5dc;
   border-radius: 9px;
   background: white;
-  font: inherit;
+  color: #21372a;
+  font-family: inherit;
   font-size: 13px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
+.schemes-heading input::placeholder {
+  color: #9aa69b;
+}
+
+.schemes-heading input:focus {
+  outline: none;
+  border-color: #397c4b;
+  box-shadow: 0 0 0 3px rgb(57 124 75 / 12%);
+}
+
+/* =====================================
+   SCHEMES GRID
+===================================== */
 
 .schemes-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
+  align-items: stretch;
 }
 
+/* =====================================
+   SCHEME CARD
+===================================== */
+
 .scheme-card {
-  padding: 24px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 25px;
   border: 1px solid #e0e8df;
   border-radius: 14px;
   background: white;
   box-shadow: 0 8px 28px rgb(32 60 36 / 4%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scheme-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgb(32 60 36 / 8%);
 }
 
 .scheme-card-mark {
   display: grid;
-  width: 40px;
-  height: 40px;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
   place-items: center;
   border-radius: 10px;
   background: #edf5eb;
@@ -91,7 +173,10 @@
 
 .scheme-card h3 {
   margin: 17px 0 10px;
+  color: #21372a;
   font-size: 19px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 
 .scheme-card > p,
@@ -99,33 +184,56 @@
   color: #68776b;
   font-size: 13px;
   line-height: 1.8;
+  overflow-wrap: anywhere;
 }
 
+.scheme-card > p {
+  margin: 0;
+}
+
+/* =====================================
+   SCHEME DETAILS
+===================================== */
+
 .scheme-detail {
+  width: 100%;
   margin-top: 17px;
 }
 
 .scheme-detail strong {
-  font-size: 12px;
+  display: block;
   color: #315c3b;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .scheme-detail p {
   margin: 6px 0 0;
 }
 
+/* =====================================
+   OFFICIAL WEBSITE LINK
+===================================== */
+
 .scheme-card > a {
   display: inline-block;
+  max-width: 100%;
   margin-top: 20px;
   color: #17623b;
   font-size: 13px;
   font-weight: 700;
+  line-height: 1.6;
   text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
 .scheme-card > a:hover {
   text-decoration: underline;
 }
+
+/* =====================================
+   EMPTY STATE AND DISCLAIMER
+===================================== */
 
 .schemes-empty,
 .schemes-disclaimer {
@@ -134,44 +242,174 @@
   line-height: 1.8;
 }
 
-.schemes-disclaimer {
-  margin-top: 25px;
+.schemes-empty {
+  margin: 24px 0;
+  padding: 22px;
+  border: 1px dashed #cbdacb;
+  border-radius: 10px;
+  background: white;
+  text-align: center;
 }
 
+.schemes-disclaimer {
+  margin-top: 27px;
+}
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 900px) {
+  .schemes-content {
+    width: min(760px, calc(100% - 40px));
+    margin: 32px auto;
+  }
+
+  .schemes-grid {
+    gap: 16px;
+  }
+
+  .scheme-card {
+    padding: 21px;
+  }
+
+  .schemes-heading {
+    gap: 16px;
+  }
+
+  .schemes-heading input {
+    width: 280px;
+  }
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
 @media (max-width: 700px) {
+  .schemes-page {
+    padding-bottom: 35px;
+  }
+
+  .schemes-back-row {
+    padding: 12px 16px 0;
+  }
+
   .schemes-hero {
     padding: 40px 20px;
+  }
+
+  .schemes-hero > span {
+    font-size: 10px;
+    letter-spacing: 1.4px;
+  }
+
+  .schemes-hero h1 {
+    margin: 11px 0;
+    font-size: clamp(29px, 7.5vw, 36px);
+  }
+
+  .schemes-hero p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .schemes-content {
+    width: calc(100% - 32px);
+    margin: 26px auto;
   }
 
   .schemes-heading {
     align-items: stretch;
     flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .schemes-heading h2 {
+    font-size: 25px;
   }
 
   .schemes-heading input {
     width: 100%;
-    box-sizing: border-box;
+    min-height: 46px;
   }
 
   .schemes-grid {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
 
   .scheme-card {
-    padding: 20px;
+    padding: 21px;
+    border-radius: 12px;
+  }
+
+  .scheme-card h3 {
+    margin-top: 14px;
+    font-size: 18px;
+  }
+
+  .scheme-card > p,
+  .scheme-detail p {
+    font-size: 13px;
+  }
+
+  .scheme-detail {
+    margin-top: 14px;
+  }
+
+  .scheme-card > a {
+    margin-top: 17px;
+  }
+
+  .schemes-disclaimer {
+    margin-top: 22px;
   }
 }
-/* Back Button */
-.schemes-back-row {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 16px 24px 0;
-  box-sizing: border-box;
+
+/* =====================================
+   SMALL MOBILE
+===================================== */
+
+@media (max-width: 360px) {
+  .schemes-back-row {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .schemes-hero {
+    padding: 34px 16px;
+  }
+
+  .schemes-content {
+    width: calc(100% - 24px);
+  }
+
+  .scheme-card {
+    padding: 17px;
+  }
+
+  .schemes-heading h2 {
+    font-size: 22px;
+  }
 }
 
-@media (max-width: 600px) {
-  .schemes-back-row {
-    padding: 12px 16px 0;
+/* =====================================
+   LARGE DESKTOP
+===================================== */
+
+@media (min-width: 1440px) {
+  .schemes-hero {
+    padding-top: 65px;
+    padding-bottom: 65px;
+  }
+
+  .schemes-content {
+    margin-top: 45px;
+  }
+
+  .schemes-grid {
+    gap: 22px;
   }
 }

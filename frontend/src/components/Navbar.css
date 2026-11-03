@@ -8,6 +8,10 @@
   --mandi-border: #e7eee8;
 }
 
+/* ==============================
+   HEADER
+================================ */
+
 .site-header,
 .site-header * {
   box-sizing: border-box;
@@ -18,7 +22,7 @@
   top: 0;
   z-index: 1000;
   width: 100%;
-  background: #fff;
+  background: #ffffff;
   border-bottom: 1px solid var(--mandi-border);
   box-shadow: 0 3px 16px rgba(20, 55, 31, 0.05);
 }
@@ -29,11 +33,16 @@
   min-height: 82px;
   margin: 0 auto;
   padding: 12px 0;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
+
+/* ==============================
+   BRAND
+================================ */
 
 .navbar-brand {
   display: inline-flex;
@@ -41,13 +50,17 @@
   gap: 11px;
   flex-shrink: 0;
   text-decoration: none;
+  min-width: 0;
 }
 
 .brand-icon {
   width: 44px;
   height: 44px;
+  flex-shrink: 0;
+
   display: grid;
   place-items: center;
+
   border-radius: 13px;
   background: var(--mandi-green-light);
   font-size: 25px;
@@ -65,13 +78,19 @@
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.5px;
+  white-space: nowrap;
 }
 
 .brand-tagline {
   color: var(--mandi-muted);
   font-size: 10px;
   font-weight: 500;
+  white-space: nowrap;
 }
+
+/* ==============================
+   DESKTOP NAVIGATION
+================================ */
 
 .navbar-content,
 .navbar-links,
@@ -84,25 +103,29 @@
   flex: 1;
   min-width: 0;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
 }
 
 .navbar-links {
-  gap: 6px;
+  gap: 5px;
   margin-left: auto;
 }
 
 .site-header .navbar-links .navbar-link {
   display: inline-flex;
   align-items: center;
-  padding: 11px 13px;
+  justify-content: center;
+
+  padding: 11px 12px;
   border-radius: 10px;
+
   color: #4a574e;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
-  transition: background 0.2s, color 0.2s;
+
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .site-header .navbar-links .navbar-link:hover,
@@ -111,9 +134,13 @@
   background: var(--mandi-green-light);
 }
 
+/* ==============================
+   NAVBAR ACTIONS
+================================ */
+
 .navbar-actions {
   flex-shrink: 0;
-  gap: 14px;
+  gap: 12px;
 }
 
 .navbar-profile {
@@ -127,11 +154,14 @@
   width: 41px;
   height: 41px;
   flex-shrink: 0;
+
   display: grid;
   place-items: center;
+
   border-radius: 50%;
-  color: #fff;
+  color: #ffffff;
   background: linear-gradient(135deg, #27954e, #126532);
+
   font-size: 16px;
   font-weight: 700;
 }
@@ -146,9 +176,11 @@
 .profile-name {
   max-width: 125px;
   overflow: hidden;
+
   color: var(--mandi-text);
   font-size: 14px;
   font-weight: 700;
+
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -157,6 +189,7 @@
   display: inline-flex;
   align-items: center;
   gap: 5px;
+
   color: var(--mandi-muted);
   font-size: 11px;
   text-transform: capitalize;
@@ -165,32 +198,41 @@
 .profile-role-dot {
   width: 6px;
   height: 6px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: #25a451;
 }
 
+/* ==============================
+   BUTTONS
+================================ */
+
 .site-header .navbar-logout,
 .site-header .navbar-login,
 .site-header .navbar-register {
-  min-height: 41px;
+  min-height: 42px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 7px;
+
   padding: 0 15px;
   border-radius: 10px;
+
   font-family: inherit;
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
+
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .site-header .navbar-logout {
   color: #35463a;
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #dce6de;
 }
 
@@ -203,7 +245,7 @@
 .site-header .navbar-login {
   color: var(--mandi-green-dark);
   border: 1px solid #c9dfcf;
-  background: #fff;
+  background: #ffffff;
 }
 
 .site-header .navbar-login:hover {
@@ -211,7 +253,7 @@
 }
 
 .site-header .navbar-register {
-  color: #fff;
+  color: #ffffff;
   border: 1px solid var(--mandi-green);
   background: var(--mandi-green);
 }
@@ -220,14 +262,32 @@
   background: var(--mandi-green-dark);
 }
 
+/* ==============================
+   HAMBURGER BUTTON
+================================ */
+
 .navbar-menu-toggle {
   display: none;
 }
 
-@media (max-width: 1050px) {
+/* ==============================
+   TABLET AND MOBILE
+   Breakpoint: 1100px
+================================ */
+
+@media (max-width: 1100px) {
+
   .site-header .navbar {
     width: calc(100% - 32px);
-    gap: 14px;
+    min-height: 72px;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
   }
 
   .brand-name {
@@ -238,133 +298,253 @@
     font-size: 9px;
   }
 
-  .navbar-content {
-    gap: 10px;
-  }
-
-  .navbar-links {
-    gap: 2px;
-  }
-
-  .site-header .navbar-links .navbar-link {
-    padding: 10px 8px;
-    font-size: 13px;
-  }
-
-  .navbar-actions {
-    gap: 9px;
-  }
-
-  .profile-name {
-    max-width: 90px;
-  }
-}
-
-@media (max-width: 760px) {
-  .site-header .navbar {
-    width: calc(100% - 28px);
-    min-height: 70px;
-    flex-wrap: wrap;
-    gap: 0;
-  }
-
-  .brand-icon {
-    width: 39px;
-    height: 39px;
-    font-size: 22px;
-  }
-
-  .brand-name {
-    font-size: 19px;
-  }
+  /* Hamburger visible */
 
   .navbar-menu-toggle {
-    width: 42px;
-    height: 42px;
-    padding: 10px;
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 5px;
+
+    padding: 10px;
     border: 1px solid var(--mandi-border);
     border-radius: 10px;
-    background: #fff;
+
+    background: #ffffff;
     cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .navbar-menu-toggle:hover {
+    background: var(--mandi-green-light);
   }
 
   .navbar-menu-toggle span {
     display: block;
     width: 100%;
     height: 2px;
+
     border-radius: 2px;
     background: var(--mandi-text);
+
+    transition: transform 0.25s ease, opacity 0.2s ease;
   }
+
+  /* Animated hamburger */
+
+  .navbar-menu-toggle.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .navbar-menu-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .navbar-menu-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Collapsed navigation */
 
   .navbar-content {
     display: none;
+
     flex: 0 0 100%;
+    width: 100%;
+    min-width: 0;
+
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
-    padding: 12px 0 16px;
+    gap: 14px;
+
+    padding: 14px 0 16px;
+    margin-top: 10px;
+
     border-top: 1px solid var(--mandi-border);
   }
 
   .navbar-content.menu-open {
     display: flex;
+    animation: navbarSlideDown 0.2s ease;
   }
 
   .navbar-links {
     width: 100%;
     flex-direction: column;
     align-items: stretch;
-    gap: 4px;
+    gap: 5px;
     margin: 0;
   }
 
   .site-header .navbar-links .navbar-link {
-    padding: 12px;
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px 14px;
     font-size: 14px;
   }
 
   .navbar-actions {
     width: 100%;
+    min-width: 0;
+
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 12px;
-    padding-top: 12px;
+
+    padding-top: 14px;
     border-top: 1px solid var(--mandi-border);
   }
 
   .navbar-profile {
     flex: 1;
+    min-width: 0;
   }
 
   .profile-name {
-    max-width: 150px;
+    max-width: 180px;
   }
 }
 
-@media (max-width: 380px) {
+/* ==============================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+
+  .site-header .navbar {
+    width: calc(100% - 24px);
+    min-height: 66px;
+  }
+
+  .navbar-brand {
+    gap: 8px;
+  }
+
+  .brand-icon {
+    width: 37px;
+    height: 37px;
+    border-radius: 11px;
+    font-size: 21px;
+  }
+
   .brand-name {
-    font-size: 17px;
+    font-size: 18px;
+    letter-spacing: -0.4px;
   }
 
   .brand-tagline {
     font-size: 8px;
   }
 
-  .brand-icon {
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
+  .navbar-menu-toggle {
+    width: 41px;
+    height: 41px;
   }
+
+  .navbar-actions {
+    gap: 10px;
+  }
+
+  /* Login and Register */
+
+  .site-header .navbar-login,
+  .site-header .navbar-register {
+    flex: 1;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0 10px;
+  }
+
+  /* Logged-in mobile actions */
+
+  .navbar-profile {
+    flex: 1 1 100%;
+  }
+
+  .profile-name {
+    max-width: 200px;
+  }
+
+  .site-header .navbar-logout {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
+/* ==============================
+   EXTRA SMALL MOBILE: 320px
+================================ */
+
+@media (max-width: 360px) {
+
+  .site-header .navbar {
+    width: calc(100% - 20px);
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 19px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .brand-tagline {
+    font-size: 7px;
+  }
+
+  .navbar-brand {
+    gap: 7px;
+  }
+
+  .navbar-menu-toggle {
+    width: 39px;
+    height: 39px;
+  }
+
+  .profile-name {
+    max-width: 155px;
+  }
+}
+
+/* ==============================
+   ANIMATION
+================================ */
+
+@keyframes navbarSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==============================
+   ACCESSIBILITY
+================================ */
+
+.site-header a:focus-visible,
+.site-header button:focus-visible {
+  outline: 3px solid rgba(22, 128, 60, 0.35);
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .site-header *,
   .site-header *::before,
   .site-header *::after {
+    animation: none !important;
     transition: none !important;
   }
 }

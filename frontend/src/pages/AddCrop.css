@@ -1,6 +1,10 @@
+
+/* ================= MAIN PAGE ================= */
+
 .add-crop-page {
   min-height: calc(100vh - 70px);
-  padding: 50px 20px;
+  padding: 24px 20px 55px;
+  box-sizing: border-box;
   background: #f5f8f3;
 }
 
@@ -8,6 +12,18 @@
   width: 100%;
   max-width: 850px;
   margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+/* ================= BACK BUTTON ================= */
+
+.add-crop-back-row {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 4px 0;
+  box-sizing: border-box;
 }
 
 
@@ -15,13 +31,13 @@
 
 .add-crop-header {
   text-align: center;
-  margin-bottom: 35px;
+  margin: 25px 0 35px;
 }
 
 .add-crop-label {
-  margin: 0 0 8px;
+  margin: 0 0 9px;
   color: #1f7a3f;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 2px;
 }
@@ -29,40 +45,43 @@
 .add-crop-header h1 {
   margin: 0;
   color: #1f2937;
-  font-size: 38px;
+  font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.2;
+  font-weight: 800;
+  overflow-wrap: anywhere;
 }
 
-.add-crop-header p {
-  margin: 10px 0 0;
+.add-crop-header p:last-child {
+  margin: 12px 0 0;
   color: #6b7280;
-  font-size: 16px;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 
 /* ================= FORM ================= */
 
 .add-crop-form {
-  padding: 40px;
-
-  background: white;
-
+  width: 100%;
+  padding: 38px;
+  box-sizing: border-box;
+  background: #ffffff;
   border: 1px solid #e3ebe5;
-  border-radius: 22px;
-
-  box-shadow: 0 15px 40px rgba(20, 60, 35, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(20, 60, 35, 0.07);
 }
 
 
-/* ================= FIELD ================= */
+/* ================= FORM FIELDS ================= */
 
 .add-crop-field {
-  margin-bottom: 22px;
+  min-width: 0;
+  margin-bottom: 23px;
 }
 
 .add-crop-field label {
   display: block;
-  margin-bottom: 8px;
-
+  margin-bottom: 9px;
   color: #374151;
   font-size: 14px;
   font-weight: 700;
@@ -70,199 +89,288 @@
 
 .add-crop-field input,
 .add-crop-field textarea {
+  display: block;
   width: 100%;
+  min-width: 0;
   box-sizing: border-box;
-
   padding: 13px 15px;
-
   border: 1px solid #d9dfda;
   border-radius: 10px;
-
   background: #fafcf9;
-
   color: #1f2937;
+  font-family: inherit;
   font-size: 15px;
-
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease;
+}
 
-  transition: all 0.25s ease;
+.add-crop-field input {
+  min-height: 48px;
+}
+
+.add-crop-field textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.add-crop-field input::placeholder,
+.add-crop-field textarea::placeholder {
+  color: #9ca3af;
 }
 
 .add-crop-field input:focus,
 .add-crop-field textarea:focus {
   border-color: #1f7a3f;
-  background: white;
-
+  background: #ffffff;
   box-shadow: 0 0 0 4px rgba(31, 122, 63, 0.1);
-}
-
-.add-crop-field textarea {
-  resize: vertical;
-  min-height: 110px;
 }
 
 .add-crop-field small {
   display: block;
-  margin-top: 7px;
-
+  margin-top: 8px;
   color: #8a948d;
   font-size: 12px;
+  line-height: 1.5;
 }
 
 
-/* ================= ROW ================= */
+/* ================= TWO COLUMN ROW ================= */
 
 .add-crop-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
+.add-crop-row .add-crop-field {
+  min-width: 0;
+}
 
-/* ================= LOCATION ================= */
+
+/* ================= LOCATION SECTION ================= */
 
 .location-section {
-  margin: 10px 0 25px;
-  padding: 22px;
-
+  margin: 8px 0 26px;
+  padding: 23px;
+  box-sizing: border-box;
   background: #f7faf7;
-
   border: 1px solid #e1ebe3;
   border-radius: 15px;
 }
 
 .location-section h3 {
-  margin: 0 0 6px;
-
+  margin: 0 0 7px;
   color: #1f2937;
   font-size: 18px;
+  font-weight: 750;
 }
 
 .location-section > p {
-  margin: 0 0 20px;
-
+  margin: 0 0 22px;
   color: #6b7280;
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.6;
+}
+
+.location-section .add-crop-row {
+  gap: 16px;
+}
+
+.location-section .add-crop-field:last-child,
+.location-section .add-crop-field:first-child {
+  margin-bottom: 0;
 }
 
 
-/* ================= MESSAGES ================= */
+/* ================= ERROR MESSAGE ================= */
 
 .add-crop-error {
   margin-bottom: 18px;
-
-  padding: 12px 14px;
-
+  padding: 13px 15px;
+  box-sizing: border-box;
   border-radius: 10px;
-
   background: #fff1f2;
   border: 1px solid #fecdd3;
-
   color: #be123c;
-
   text-align: center;
   font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
+
+
+/* ================= SUCCESS MESSAGE ================= */
 
 .add-crop-success {
   margin-bottom: 18px;
-
-  padding: 12px 14px;
-
+  padding: 13px 15px;
+  box-sizing: border-box;
   border-radius: 10px;
-
   background: #ecfdf5;
   border: 1px solid #a7f3d0;
-
   color: #047857;
-
   text-align: center;
   font-size: 14px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 
-/* ================= BUTTON ================= */
+/* ================= SUBMIT BUTTON ================= */
 
 .add-crop-button {
+  display: block;
   width: 100%;
-
-  padding: 14px;
-
+  min-height: 50px;
+  padding: 14px 18px;
   border: none;
   border-radius: 11px;
-
-  background: linear-gradient(
-    135deg,
-    #1f7a3f,
-    #176331
-  );
-
-  color: white;
-
+  background: linear-gradient(135deg, #1f7a3f, #176331);
+  color: #ffffff;
+  font-family: inherit;
   font-size: 16px;
   font-weight: 700;
-
   cursor: pointer;
-
   box-shadow: 0 8px 18px rgba(31, 122, 63, 0.2);
-
-  transition: all 0.25s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    opacity 0.2s ease;
 }
 
-.add-crop-button:hover {
+.add-crop-button:hover:not(:disabled) {
   transform: translateY(-2px);
-
-  box-shadow: 0 12px 25px rgba(31, 122, 63, 0.3);
+  box-shadow: 0 12px 25px rgba(31, 122, 63, 0.27);
 }
 
-.add-crop-button:active {
+.add-crop-button:active:not(:disabled) {
   transform: translateY(0);
 }
 
 .add-crop-button:disabled {
   opacity: 0.65;
   cursor: not-allowed;
-  transform: none;
+  box-shadow: none;
 }
 
 
-/* ================= RESPONSIVE ================= */
+/* ================= TABLET ================= */
 
-@media (max-width: 650px) {
-
+@media (max-width: 768px) {
   .add-crop-page {
-    padding: 35px 15px;
+    padding: 20px 18px 45px;
+  }
+
+  .add-crop-form {
+    padding: 30px;
+  }
+
+  .add-crop-header {
+    margin: 23px 0 28px;
+  }
+
+  .location-section {
+    padding: 20px;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+  .add-crop-page {
+    padding: 14px 15px 35px;
+  }
+
+  .add-crop-back-row {
+    padding: 8px 0 0;
+  }
+
+  .add-crop-header {
+    margin: 24px 0 25px;
   }
 
   .add-crop-header h1 {
-    font-size: 30px;
+    font-size: 29px;
+  }
+
+  .add-crop-header p:last-child {
+    max-width: 340px;
+    margin: 10px auto 0;
+    font-size: 14px;
   }
 
   .add-crop-form {
     padding: 25px 20px;
+    border-radius: 16px;
   }
 
   .add-crop-row {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 0;
   }
 
+  .add-crop-field {
+    margin-bottom: 20px;
+  }
+
   .location-section {
-    padding: 18px;
+    margin-bottom: 23px;
+    padding: 18px 15px;
+  }
+
+  .location-section .add-crop-row {
+    gap: 0;
+  }
+
+  .location-section .add-crop-field {
+    margin-bottom: 18px;
+  }
+
+  .location-section .add-crop-field:last-child {
+    margin-bottom: 0;
+  }
+
+  .add-crop-button {
+    min-height: 49px;
   }
 }
-/* Back Button */
-.add-crop-back-row {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 16px 24px 0;
-  box-sizing: border-box;
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media (max-width: 380px) {
+  .add-crop-page {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .add-crop-header h1 {
+    font-size: 26px;
+  }
+
+  .add-crop-form {
+    padding: 22px 15px;
+  }
+
+  .location-section {
+    padding: 16px 12px;
+  }
+
+  .add-crop-field input,
+  .add-crop-field textarea {
+    padding: 12px;
+    font-size: 14px;
+  }
 }
 
-@media (max-width: 600px) {
-  .add-crop-back-row {
-    padding: 12px 16px 0;
+
+/* ================= ACCESSIBILITY ================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .add-crop-field input,
+  .add-crop-field textarea,
+  .add-crop-button {
+    transition: none;
   }
 }
